@@ -1,8 +1,9 @@
 
 ROWS = 10
-COLS = 10
+COLS = 20
 
 x, y = 1, 1
+
 
 sym = [['.', 'X', '.'],['X', 'X', 'X'], ['.', 'X', '.']]
 def print_field():
@@ -19,13 +20,25 @@ while True:
     print_field()
     
     try:
-        dx = int(input("Введіть зміщення за горизонталлю (-1, 0, або 1): "))
-        dy = int(input("Введіть зміщення за вертикаллю (-1, 0, або 1): "))
+        ctrl_input = input("Введіть зміщення(w,s,a,d): ")
+        if  ctrl_input == "w":
+            dx = -1
+            dy = 0
+        elif ctrl_input == "s":
+            dx = 1
+            dy = 0
+        elif ctrl_input == "a":
+            dy = -1
+            dx = 0
+        elif ctrl_input == "d":
+            dy = 1
+            dx = 0
+
     except:
         print("Введіть коректні значення.")
         continue
     
-    if -1 <= x + dx < ROWS-2 and -1 <= y + dy < COLS-2:
+    if 0 <= x + dx < ROWS-2 and 0 <= y + dy < COLS-2:
         x += dx
         y += dy
     else:
